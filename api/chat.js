@@ -1,4 +1,4 @@
-module.exports = async function (req, res) {
+export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -25,11 +25,14 @@ module.exports = async function (req, res) {
 
     const data = await response.json();
 
+    // ⭐⭐⭐ 加上这行：打印 DeepSeek 返回的数据
+    console.log("🟡 DeepSeek raw response:", data);
+
     return res.status(200).json({
       reply: data.choices?.[0]?.message?.content || "No response"
     });
   } catch (error) {
-    console.error(error);
+    console.error("🔴 API Error:", error);
     return res.status(500).json({ error: "Request failed" });
   }
-};
+}
