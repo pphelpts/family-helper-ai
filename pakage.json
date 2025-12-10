@@ -1,0 +1,8 @@
+{
+  "name": "family-helper-ai",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.0"
+  }
+}
